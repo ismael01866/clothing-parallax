@@ -1,0 +1,108 @@
+@mixin property($prop, $mod, $value)
+{
+
+    @if ($prop == 'h')
+    {
+        @if ($mod == "")
+        {
+            height: #{$value/$base-unit}rem !important;
+        }
+
+        @if ($mod == "min")
+        {
+            min-height: #{$value/$base-unit}rem !important;
+        }
+
+        @if ($mod == "max")
+        {
+            max-height: #{$value/$base-unit}rem !important;
+        }
+    }
+
+    @if ($prop == 'w')
+    {
+        @if ($mod == "")
+        {
+            width: #{$value/$base-unit}rem !important;
+        }
+
+        @if ($mod == "min")
+        {
+            min-width: #{$value/$base-unit}rem !important;
+        }
+
+        @if ($mod == "max")
+        {
+            max-width: #{$value/$base-unit}rem !important;
+        }
+    }
+
+}
+
+@mixin css-property($prop, $dimension, $breakpoint: "", $mod: "")
+{
+
+    @if ($breakpoint != "")
+    {
+
+        @include media-breakpoint-down($breakpoint)
+        {
+
+            @if ($mod != "")
+            {
+
+                .#{$mod}-#{$prop}-#{$breakpoint}-#{$dimension}
+                {
+                    @include property($prop, $mod, $dimension)
+                }
+
+            }
+
+            @else
+            {
+                .#{$prop}-#{$breakpoint}-#{$dimension}
+                {
+                    @include property($prop, $mod, $dimension)
+                }
+            }
+
+        }
+
+    }
+
+    @else
+    {
+
+        @if ($mod != "")
+        {
+            .#{$mod}-#{$prop}-#{$dimension}
+            {
+                @include property($prop, $mod, $dimension)
+            }
+        }
+
+        @else
+        {
+            .#{$prop}-#{$dimension}
+            {
+                @include property($prop, $mod, $dimension)
+            }
+        }
+
+    }
+
+}
+
+@each $breakpoint in $breakpoint-list
+{
+    @each $dimension in $dimension-list
+    {
+        @each $prop in (h, w)
+        {
+            @each $limiter in ("", min, max)
+            {
+                @include css-property($prop, $dimension, $breakpoint, $limiter)
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+$_imported: () !default;
+
+// This mixin makes sure a module is imported only once.
+// @param {String} $name - Name of exported module
+
+@mixin exports($name) {
+    @if (index($_imported, $name) == null) {
+        $_imported: prepend($_imported, $name) !global;
+        @content;
+    }
+}

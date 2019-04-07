@@ -1,0 +1,23 @@
+@mixin img-fit
+{
+    @include pos-center;
+
+    min-height: 100%;
+    min-width : 100%;
+    object-fit: scale-down;
+}
+
+@mixin pos-center
+{
+    left     : 50%;
+    position : absolute !important;
+    top      : 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin pseudo($content: "", $display: block, $pos: absolute)
+{
+    content : $content;
+    display : $display;
+    position: $pos;
+}

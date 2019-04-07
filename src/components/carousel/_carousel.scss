@@ -1,0 +1,147 @@
+.carousel
+{
+    height: 100%;
+
+    .carousel-inner
+    {
+        height: 100%;
+
+        .carousel-item
+        {
+            height             : 100%;
+            transition-delay   : .04s;
+            transition-duration: .8s;
+
+            img
+            {
+                left      : 50%;
+                max-height: 100%;
+                position  : absolute;
+                top       : 50%;
+                transform : translate(-50%, -50%);
+                width     : auto;
+            }
+
+            .slide-bg
+            {
+                @include pos-center;
+
+                height: 76%;
+                width : 100%;
+            }
+
+            .shape
+            {
+                height   : 18rem;
+                left     : 8rem;
+                position : absolute;
+                top      : 50%;
+                transform: translate(0, -50%);
+                width    : 10rem;
+            }
+
+            .title
+            {
+                font-size: 4rem;
+                left     : 12rem;
+                position : absolute;
+                top      : 50%;
+                transform: translateY(-50%);
+            }
+
+            img, .shape, .title
+            {
+                transition: left .32s ease-out;
+            }
+
+            &:nth-child(1)
+            {
+                img
+                {
+                    margin-left : 8rem;
+                }
+            }
+
+            &:nth-child(2)
+            {
+                img
+                {
+                    margin-left: 8rem;
+                    margin-top : 1rem;
+                    max-height : 64%;
+                }
+            }
+
+            &:not(.active) // entering ...
+            {
+                img
+                {
+                    left: calc(50% + 15rem);
+                }
+
+                .shape
+                {
+                    left: 12rem;
+                }
+
+                .title
+                {
+                    left: 20rem;
+                }
+
+                img, .shape, .title
+                {
+                    transition-timing-function: ease-in;
+                }
+            }
+
+            // Animation
+
+            &.carousel-item-left
+            {
+
+                &:not(.carousel-item-next) // leaving ...
+                {
+                    img
+                    {
+                        left: calc(50% - 15rem);
+                    }
+
+                    .shape
+                    {
+                        left: 4rem;
+                    }
+
+                    .title
+                    {
+                        left: 2rem;
+                    }
+                }
+
+                &.carousel-item-next // after entering ...
+                {
+                    img
+                    {
+                        left: 50%;
+                    }
+
+                    .shape
+                    {
+                        left: 8rem;
+                    }
+
+                    .title
+                    {
+                        left: 12rem;
+                    }
+
+                    img, .shape, .title
+                    {
+                        transition-duration: .8s;
+                    }
+                }
+
+            }
+        }
+    }
+}

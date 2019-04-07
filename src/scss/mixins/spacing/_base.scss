@@ -1,0 +1,95 @@
+@mixin margin($value, $mod: "")
+{
+
+    @if $mod == ""  { margin       : $value; }
+    @if $mod == "t" { margin-top   : $value; }
+    @if $mod == "r" { margin-right : $value; }
+    @if $mod == "b" { margin-bottom: $value; }
+    @if $mod == "l" { margin-left  : $value; }
+    @if $mod == "x" { margin-left  : $value; margin-right : $value; }
+    @if $mod == "y" { margin-bottom: $value; margin-top   : $value;  }
+
+}
+
+@mixin padding($value, $mod: "")
+{
+
+    @if $mod == ""  { padding       : $value; }
+    @if $mod == "t" { padding-top   : $value; }
+    @if $mod == "r" { padding-right : $value; }
+    @if $mod == "b" { padding-bottom: $value; }
+    @if $mod == "l" { padding-left  : $value; }
+    @if $mod == "x" { padding-left  : $value; padding-right : $value; }
+    @if $mod == "y" { padding-bottom: $value; padding-top   : $value; }
+
+}
+
+@mixin property($prop, $value, $mod: "")
+{
+
+    @if ($prop == "m" or $prop == "mn")
+    {
+        @include margin($value,  $mod)
+    }
+
+    @if ($prop == "p")
+    {
+        @include padding($value, $mod)
+    }
+
+}
+
+@mixin css-prop($prop, $space, $value, $breakpoint: "", $mod: "")
+{
+
+    @if ($breakpoint != "")
+    {
+
+        @include media-breakpoint-down($breakpoint)
+        {
+
+            @if ($mod != "")
+            {
+
+                .#{$prop}-#{$mod}-#{$breakpoint}-#{$space}
+                {
+                    @include property($prop, $value, $mod)
+                }
+
+            }
+
+            @else
+            {
+                .#{$prop}-#{$breakpoint}-#{$space}
+                {
+                    @include property($prop, $value, $mod)
+                }
+
+            }
+
+        }
+
+    }
+
+    @else
+    {
+
+        @if ($mod != "")
+        {
+            .#{$prop}-#{$mod}-#{$space}
+            {
+                @include property($prop, $value, $mod)
+            }
+        }
+
+        @else
+        {
+            .#{$prop}-#{$space}
+            {
+                @include property($prop, $value, $mod)
+            }
+        }
+
+    }
+
+}

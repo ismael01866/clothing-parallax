@@ -1,0 +1,26 @@
+html
+{
+    font-size: 1rem;
+    height   : 100%;
+    position : relative;
+
+    body
+    {
+        background-color: $white;
+        font-family     : $font-playfair-display;
+        height          : 100%;
+        letter-spacing  : .12pt;
+        min-height      : 100vh;
+        padding         : 4rem;
+        position        : relative;
+        width           : 100%;
+
+        footer
+        {
+            display        : flex;
+            justify-content: space-between;
+            margin-top     : auto;
+            width          : 15rem;
+        }
+    }
+}

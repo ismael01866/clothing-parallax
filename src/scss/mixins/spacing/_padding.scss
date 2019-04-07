@@ -1,0 +1,13 @@
+@import "../../mixins/spacing/_base";
+
+@each $breakpoint in $breakpoint-list
+{
+    @each $space in $spacing-list
+    {
+        $value: #{$space/$base-unit}rem !important;
+        @each $direction in $direction-list
+        {
+            @include css-prop("p",  $space, $value,  $breakpoint, $direction)
+        }
+    }
+}
