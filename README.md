@@ -1,5 +1,6 @@
 # clothing-parallax
 Sample parallax carousel, using vue.js and bootstrap
+https://ismael01866.github.io/clothing-parallax/
 
 ![Screenshot](screenshot.jpg)
 
