@@ -35,7 +35,7 @@
   </div>
 </template>
 
-<style scoped>
+<style>
   @import '@scss/mixins/_common.scss';
   @import './carousel.scss';
 </style>

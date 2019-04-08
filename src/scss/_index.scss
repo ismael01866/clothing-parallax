@@ -8,7 +8,6 @@
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/transitions";
 
-@import "src/components/index.scss";
-
+@import "bootstrap_components.scss";
 @import "variables/_all", "mixins/_all", "base/_all";
 @import "layout/_all";

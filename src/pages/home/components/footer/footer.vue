@@ -22,3 +22,7 @@
     >
   </footer>
 </template>
+
+<style>
+  @import './_footer.scss';
+</style>

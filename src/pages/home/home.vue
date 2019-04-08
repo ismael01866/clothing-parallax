@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import NavbarComponent   from '@components/navbar/navbar.vue';
-import CarouselComponent from '@components/carousel/carousel.vue';
-import FooterComponent   from '@components/footer/footer.vue';
+import NavbarComponent   from './components/navbar/navbar.vue';
+import CarouselComponent from './components/carousel/carousel.vue';
+import FooterComponent   from './components/footer/footer.vue';
 
 export default {
   components: {
